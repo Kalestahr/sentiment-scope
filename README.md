@@ -2,7 +2,7 @@
 
 A transformer built from scratch in PyTorch to classify IMDB movie reviews as positive or negative. Built as part of Udacity's AI Engineer Nanodegree, framed as a CineScope ML project to feed sentiment signals into a recommendation system.
 
-An interactive Streamlit app (link: _add after deploying_) lets you classify single reviews or a whole CSV and see the model's training metrics.
+An interactive Streamlit app (link: https://sentiment-scope-aws.streamlit.app/) lets you classify single reviews or a whole CSV and see the model's training metrics.
 
 ## Project Goals
 
