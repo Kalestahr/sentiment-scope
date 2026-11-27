@@ -22,7 +22,7 @@ An interactive Streamlit app (link: _add after deploying_) lets you classify sin
 
 ![Training curves](assets/training_curves.png)
 
-## Key Takeaways
+## Takeaways
 
 1. Two changes turn a generation transformer into a classifier: pool token embeddings into one vector, then map it to class logits.
 2. Most reviews run past ~100 words, so a 128-token window only sees each review's opening. Context length is the biggest accuracy lever.
