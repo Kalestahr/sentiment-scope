@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-import streamlit.components.v1 as components
 
 from src.predict import SentimentPredictor
 
@@ -87,20 +86,18 @@ def ticker(df):
         return f'<div class="row"><div class="track {direction}">{cards}{cards}</div></div>'
 
     return f"""<style>
-    {FONTS}
-    body {{margin: 0; background: #FAF8F5;}}
-    .row {{overflow: hidden; padding: 6px 0;}}
-    .track {{display: flex; gap: 14px; width: max-content; animation: scroll 140s linear infinite;}}
-    .track.right {{animation-direction: reverse;}}
-    .row:hover .track {{animation-play-state: paused;}}
-    @keyframes scroll {{from {{transform: translateX(0);}} to {{transform: translateX(-50%);}}}}
-    @media (prefers-reduced-motion: reduce) {{.track {{animation: none;}}}}
-    .card {{width: 290px; flex: none; background: #fff; border: 1px solid #e3ddd5; border-radius: 8px; padding: 14px 16px;}}
-    .top {{display: flex; justify-content: space-between; font: 600 11px Inter, sans-serif;
-           letter-spacing: .08em; text-transform: uppercase; color: #8a8278; margin-bottom: 8px;}}
-    .pos {{color: #1e6b3d;}} .neg {{color: #8B1E3F;}} .miss {{color: #b3541e;}}
-    p {{margin: 0; height: 92px; overflow: hidden; font: 14.5px/1.55 'Source Serif 4', Georgia, serif; color: #2b2b2b;}}
-    </style>{track(1, "left")}{track(0, "right")}"""
+    .ticker .row {{overflow: hidden; padding: 6px 0;}}
+    .ticker .track {{display: flex; gap: 14px; width: max-content; animation: tick 140s linear infinite;}}
+    .ticker .track.right {{animation-direction: reverse;}}
+    .ticker .row:hover .track {{animation-play-state: paused;}}
+    @keyframes tick {{from {{transform: translateX(0);}} to {{transform: translateX(-50%);}}}}
+    @media (prefers-reduced-motion: reduce) {{.ticker .track {{animation: none;}}}}
+    .ticker .card {{width: 290px; flex: none; background: #fff; border: 1px solid #e3ddd5; border-radius: 8px; padding: 14px 16px;}}
+    .ticker .top {{display: flex; justify-content: space-between; font: 600 11px Inter, sans-serif;
+                   letter-spacing: .08em; text-transform: uppercase; color: #8a8278; margin-bottom: 8px;}}
+    .ticker .pos {{color: #1e6b3d;}} .ticker .neg {{color: #8B1E3F;}} .ticker .miss {{color: #b3541e;}}
+    .ticker p {{margin: 0; height: 92px; overflow: hidden; font: 14.5px/1.55 'Source Serif 4', Georgia, serif; color: #2b2b2b;}}
+    </style><div class="ticker">{track(1, "left")}{track(0, "right")}</div>"""
 
 
 # Masthead
@@ -129,7 +126,7 @@ if SAMPLES.exists():
 
     section(1, "Reviews in the wild")
     st.caption("Real reviews from the IMDB test set. Hover over a row to pause it.")
-    components.html(ticker(samples), height=330)
+    st.markdown(ticker(samples), unsafe_allow_html=True)
 
     section(2, "Your read against the model")
     st.caption("Read the review and decide how the writer felt. Then see how you and the model compare.")

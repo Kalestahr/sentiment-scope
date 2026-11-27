@@ -15,8 +15,8 @@ An interactive Streamlit app (link: _add after deploying_) lets you classify sin
 
 | Metric | Value |
 | --- | --- |
-| Best validation accuracy (2,500 reviews) | XX.XX% |
-| Test accuracy (25,000 reviews) | XX.XX% |
+| Best validation accuracy (2,500 reviews) | 80.24% |
+| Test accuracy (25,000 reviews) | 77.22% |
 | Epochs | 5 |
 | Parameters | ~4.8M |
 
