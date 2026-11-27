@@ -1,0 +1,40 @@
+{
+  "test_acc": 77.72,
+  "best_val_acc": 80.24,
+  "epochs": 5,
+  "params": 4716800,
+  "config": {
+    "vocabulary_size": 30522,
+    "num_classes": 2,
+    "d_embed": 128,
+    "context_size": 128,
+    "layers_num": 4,
+    "heads_num": 4,
+    "head_size": 32,
+    "dropout_rate": 0.1,
+    "use_bias": true
+  },
+  "history": {
+    "epoch": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "train_loss": [
+      0.6162840844216672,
+      0.49366073665971105,
+      0.4243627372409471,
+      0.365988992493261,
+      0.31995812156872655
+    ],
+    "val_acc": [
+      72.04,
+      75.52,
+      78.64,
+      80.24,
+      80.04
+    ]
+  }
+}

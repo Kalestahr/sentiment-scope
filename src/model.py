@@ -1,8 +1,4 @@
-"""SentimentScope transformer.
-
-Replace these classes with your completed versions from the notebook
-before running the app (Setup Guide, step 7).
-"""
+"""SentimentScope transformer (mirrors the notebook)."""
 import math
 
 import torch
@@ -117,7 +113,8 @@ class DemoGPT(nn.Module):
         # Layer normalization: Applied to stabilize training.
         self.layer_norm = nn.LayerNorm(config["d_embed"])
         
-        # TODO: Implement classification output layer - Maps pooled embeddings to class logits.
+        # Classification head: pooled embedding -> class logits
+        self.classifier = nn.Linear(config["d_embed"], config["num_classes"], bias=False)
 
     def forward(self, token_ids):
         """
@@ -142,8 +139,10 @@ class DemoGPT(nn.Module):
         x = self.layers(x)  # Shape: (B, T, d_embed)
         x = self.layer_norm(x)  # Normalize across the feature dimension
         
-        # Step 3: TODO: Apply mean pooling across the time dimension  # Shape: (B, d_embed)
-        
-        # Step 4: TODO: Generate logits for classification  # Shape: (B, num_classes)
+        # Step 3: Mean pooling over time
+        x = torch.mean(x, dim=1)  # Shape: (B, d_embed)
+
+        # Step 4: Logits
+        logits = self.classifier(x)  # Shape: (B, num_classes)
         
         return logits
